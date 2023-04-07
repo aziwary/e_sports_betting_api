@@ -91,15 +91,15 @@ if col7.button("Estimate winning probabilities and implied odds"):
     prob_blue_team = round(prediction["prob_blue_winning"] * 100, 2)
     odd_red_team = round(prediction["odd_blue_losing"],2)
     odd_blue_team = round(prediction["odd_red_losing"],2)
-    expected_value = round(bookmaker_blue * invest * prob_blue_team/100 - bookmaker_red * invest * prob_red_team/100, 2)
+    expected_value = round(bookmaker_blue * invest * prob_blue_team/100 - bookmaker_red * invest * prob_red_team/100 - invest, 2)
 
-    if expected_value > invest:
+    if expected_value > 0:
         color = "green"
     else:
         color = "red"
 
     st.markdown(f"<h2 style='text-align: center; color: white;'>{blue_team} will win with a probability of {prob_blue_team}%, representing implied odds of {odd_blue_team}.</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h2 style='text-align: center; color: {color};'>$ The expected value of the bet is {expected_value} $</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center; color: {color};'>$ The expected profit of the bet is {expected_value} $</h2>", unsafe_allow_html=True)
 else:
     col7.write("Analysis not started")
 
