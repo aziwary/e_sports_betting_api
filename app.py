@@ -51,8 +51,8 @@ for i in range(5):
     blue_champs.append(col3.selectbox(f"Blue team champion {i+1}", champions))
     red_champs.append(col5.selectbox(f"Red team champion {i+1}", champions))
 
-bookmaker_blue = col3.number_input('Bookmaker odds for blue side', min_value=0.01)
-bookmaker_red = col5.number_input('Bookmaker odds for red side', min_value=0.01)
+bookmaker_blue = col3.number_input('Bookmaker odds for blue side', value=2)
+bookmaker_red = col5.number_input('Bookmaker odds for red side', value=2)
 
 bookmaker_blue_prob = 1 / bookmaker_blue
 bookmaker_red_prob = 1 / bookmaker_red
@@ -99,7 +99,7 @@ if col7.button("Estimate winning probabilities and implied odds"):
         color = "red"
 
     st.markdown(f"<h2 style='text-align: center; color: white;'>{blue_team} will win with a probability of {prob_blue_team}%, representing implied odds of {odd_blue_team}.</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h2 style='text-align: center; color: {color};'>$ The expected profit of the bet is {expected_value} $</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center; color: {color};'>$ The expected profit of a bet on {blue_team} winning is {expected_value} $</h2>", unsafe_allow_html=True)
 else:
     col7.write("Analysis not started")
 
