@@ -62,7 +62,7 @@ if col7.button("Estimate winning probabilities and implied odds"):
         bar.progress(i+1)
         time.sleep(0.08)
 
-    url = "http://127.0.0.1:8000/predict"
+    url = "https://e-sports-final-cm5wuo7s2a-uc.a.run.app/predict"
     params = dict(
         league=league,
         team_1=blue_team,
