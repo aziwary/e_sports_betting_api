@@ -51,8 +51,8 @@ for i in range(5):
     blue_champs.append(col3.selectbox(f"Blue team champion {i+1}", champions))
     red_champs.append(col5.selectbox(f"Red team champion {i+1}", champions))
 
-bookmaker_blue = col3.number_input('Bookmaker odds for blue side', value=2)
-bookmaker_red = col5.number_input('Bookmaker odds for red side', value=2)
+bookmaker_blue = col3.number_input('Bookmaker odds for blue side', value=2.00)
+bookmaker_red = col5.number_input('Bookmaker odds for red side', value=2.00)
 
 bookmaker_blue_prob = 1 / bookmaker_blue
 bookmaker_red_prob = 1 / bookmaker_red
