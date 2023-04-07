@@ -91,7 +91,7 @@ if col7.button("Estimate winning probabilities and implied odds"):
     prob_blue_team = round(prediction["prob_blue_winning"] * 100, 2)
     odd_red_team = round(prediction["odd_blue_losing"],2)
     odd_blue_team = round(prediction["odd_red_losing"],2)
-    expected_value = round(bookmaker_blue * invest * prob_blue_team/100 - bookmaker_red * invest * prob_red_team/100 - invest, 2)
+    expected_value = round(bookmaker_blue * invest * prob_blue_team/100 - invest, 2)
 
     if expected_value > 0:
         color = "green"
