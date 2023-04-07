@@ -9,6 +9,7 @@ from io import BytesIO
 
 st.markdown("<h1 style='text-align: center; color: white;'>League of Legends E-Sports Prediction Model</h1>", unsafe_allow_html=True)
 # Create a dropdown menu for selecting the league
+invest = st.number_input('Amount of money invested')
 league = st.selectbox("Select the league", ["LEC", "LCS", "PCS", "CBLOL", "TCL", "LLA", "LJL"])
 col1, col2 = st.columns(2)
 col3, col4, col5 = st.columns(3)
@@ -50,6 +51,12 @@ for i in range(5):
     blue_champs.append(col3.selectbox(f"Blue team champion {i+1}", champions))
     red_champs.append(col5.selectbox(f"Red team champion {i+1}", champions))
 
+bookmaker_blue = col3.number_input('Bookmaker odds for blue side', min_value=0.01)
+bookmaker_red = col5.number_input('Bookmaker odds for red side', min_value=0.01)
+
+bookmaker_blue_prob = 1 / bookmaker_blue
+bookmaker_red_prob = 1 / bookmaker_red
+
 # Add a button to submit the form
 if col7.button("Estimate winning probabilities and implied odds"):
     import time
@@ -84,8 +91,15 @@ if col7.button("Estimate winning probabilities and implied odds"):
     prob_blue_team = round(prediction["prob_blue_winning"] * 100, 2)
     odd_red_team = round(prediction["odd_blue_losing"],2)
     odd_blue_team = round(prediction["odd_red_losing"],2)
-    col6.markdown(f"**Blue team** will win with a probability of **{prob_blue_team}%**, representing implied odds of **{odd_blue_team}**.")
-    col8.markdown(f"**Red team** will win with a loss probability of **{prob_red_team}%**, representing implied odds of **{odd_red_team}**.")
+    expected_value = round(bookmaker_blue * invest * odd_blue_team/100 - bookmaker_red * invest * odd_red_team/100, 2)
+
+    if expected_value > invest:
+        color = "green"
+    else:
+        color = "red"
+
+    st.markdown(f"<h2 style='text-align: center; color: white;'>{blue_team} will win with a probability of {odd_blue_team}%, representing implied odds of {prob_blue_team}.</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center; color: {color};'>$ The expected value of the bet is {expected_value} $</h2>", unsafe_allow_html=True)
 else:
     col7.write("Analysis not started")
 
