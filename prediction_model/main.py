@@ -1,10 +1,14 @@
 import pandas as pd
 import time
 import warnings
+from google.cloud import storage
+
+from prediction_model.params import *
 
 warnings.filterwarnings("ignore")
 
 league_list = ["LEC", "LCS", "PCS", "CBLOL", "TCL", "LLA", "LJL", "UL", "LCK"]
+
 
 def preprocess():
     """
@@ -12,12 +16,36 @@ def preprocess():
     """
     from prediction_model.ml_logic.filter_leagues import filter_league
 
-    raw_df_2021 = pd.read_csv('data/2021_LoL_esports_Data.csv', parse_dates=['date'])
-    raw_df_2022 = pd.read_csv('data/2022_LoL_esports_Data.csv', parse_dates=['date'])
-    raw_df_2023 = pd.read_csv('data/2023_LoL_esports_Data.csv', parse_dates=['date'])
+    storage_client = storage.Client(project='wagon-bootcamp-377018')
+    raw_df_2021 = pd.read_csv('gs://esports_betting/2021_LoL_esports_Data.csv', parse_dates=['date'])
+    raw_df_2022 = pd.read_csv('gs://esports_betting/2022_LoL_esports_Data.csv', parse_dates=['date'])
+    raw_df_2023 = pd.read_csv('gs://esports_betting/2023_LoL_esports_Data.csv', parse_dates=['date'])
 
-    champ_wr = pd.read_csv('data/all_patches_final.csv')
+    champ_wr = pd.read_csv('gs://esports_betting/all_patches_final.csv')
 
+
+    #for blob in blobs:
+        #dat = pd.read_csv("gs://{}/{}".format(bucket_name, blob.name), encoding_errors="ignore")
+        #all_dat = all_dat.append(dat, ignore_index=True)
+
+    #query_job = client.query("""
+                             #SELECT *
+                             #FROM wagon-bootcamp-377018.esports_betting.2021_LoL_esports_Data
+                             #""")
+    #result = query_job.result()
+    #df = result.to_dataframe()
+    #df.to_csv(header=True, index=False)
+
+    #uri1 = 'gs://esports_betting/2021_LoL_esports_Data.csv'
+    #uri2 = 'gs://esports_betting/2022_LoL_esports_Data.csv'
+    #uri3 = 'gs://esports_betting/2023_LoL_esports_Data.csv'
+    #uri4 = 'gs://esports_betting/all_patches_final.csv'
+
+    #raw_2021 = client.load_table_from_uri(uri1, "wagon-bootcamp-377018.esports_betting.2021_LoL_esports_Data")
+    #raw_2021.result()
+
+    #raw_2021_table = client.get_table("wagon-bootcamp-377018.esports_betting.2021_LoL_esports_Data")
+    #print(raw_2021_table.head())
     final_df = champ_wr
 
     final_df["Win%"] = final_df["Win %"].str.rstrip('%')

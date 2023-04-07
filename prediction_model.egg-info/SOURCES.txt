@@ -1,7 +1,13 @@
 .gitignore
-Data preparation test.ipynb
 README.md
+requirements.txt
 setup.py
+.ipynb_checkpoints/Data preparation test-checkpoint.ipynb
+.ipynb_checkpoints/Data preparation test_incl2020-checkpoint.ipynb
+.ipynb_checkpoints/Odds Webscraping-checkpoint.ipynb
+.ipynb_checkpoints/Untitled-checkpoint.ipynb
+.ipynb_checkpoints/VS Code Test-checkpoint.ipynb
+.ipynb_checkpoints/Webscrape Test-checkpoint.ipynb
 Champions_dataframe/all_patches.csv
 Champions_dataframe/patch_12_1.csv
 Champions_dataframe/patch_12_10.csv
@@ -32,8 +38,13 @@ Champions_dataframe/patch_13_4.csv
 Champions_dataframe/patch_13_5.csv
 Champions_dataframe/patch_13_6.csv
 Champions_dataframe/win_and_champions_patch.pickle
+betting_model.egg-info/PKG-INFO
+betting_model.egg-info/SOURCES.txt
+betting_model.egg-info/dependency_links.txt
+betting_model.egg-info/not-zip-safe
+betting_model.egg-info/requires.txt
+betting_model.egg-info/top_level.txt
 prediction_model/__init__.py
-prediction_model/backup.py
 prediction_model/main.py
 prediction_model/params.py
 prediction_model.egg-info/PKG-INFO
@@ -42,12 +53,23 @@ prediction_model.egg-info/dependency_links.txt
 prediction_model.egg-info/not-zip-safe
 prediction_model.egg-info/requires.txt
 prediction_model.egg-info/top_level.txt
+prediction_model/__pycache__/__init__.cpython-310.pyc
+prediction_model/__pycache__/main.cpython-310.pyc
 prediction_model/api/__init__.py
 prediction_model/api/fast.py
+prediction_model/api/__pycache__/__init__.cpython-310.pyc
+prediction_model/api/__pycache__/fast.cpython-310.pyc
 prediction_model/ml_logic/__init__.py
 prediction_model/ml_logic/filter_leagues.py
+prediction_model/ml_logic/__pycache__/__init__.cpython-310.pyc
+prediction_model/ml_logic/__pycache__/filter_leagues.cpython-310.pyc
 prediction_model/ml_logic/parameters/__init__.py
 prediction_model/ml_logic/parameters/chmp_wr.py
 prediction_model/ml_logic/parameters/gspd.py
 prediction_model/ml_logic/parameters/streak.py
 prediction_model/ml_logic/parameters/winrate.py
+prediction_model/ml_logic/parameters/__pycache__/__init__.cpython-310.pyc
+prediction_model/ml_logic/parameters/__pycache__/chmp_wr.cpython-310.pyc
+prediction_model/ml_logic/parameters/__pycache__/gspd.cpython-310.pyc
+prediction_model/ml_logic/parameters/__pycache__/streak.cpython-310.pyc
+prediction_model/ml_logic/parameters/__pycache__/winrate.cpython-310.pyc
